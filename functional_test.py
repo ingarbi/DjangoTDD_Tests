@@ -2,14 +2,15 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 import unittest
 
+options = Options()
+options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
+
 
 class NewVisitorTest(unittest.TestCase):
 
     def setUp(self):
-        self.options = Options()
-        self.options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
         self.browser = webdriver.Firefox(
-            firefox_options=self.options,
+            firefox_options=options,
             executable_path=r"C:/Program Files/Mozilla Firefox/geckodriver.exe"
         )
 
