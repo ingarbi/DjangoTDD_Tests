@@ -3,8 +3,12 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
-from django.test import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
+
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 
 options = Options()
 options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
@@ -12,7 +16,7 @@ options.binary_location = r"C:/Program Files/Mozilla Firefox/firefox.exe"
 MAX_WAIT = 10
 
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox(
@@ -21,6 +25,7 @@ class NewVisitorTest(LiveServerTestCase):
         )
 
     def tearDown(self):
+        self.browser.refresh()
         self.browser.quit()
 
     def wait_for_row_in_list_table(self, row_text):
