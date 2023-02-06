@@ -5,6 +5,7 @@ import time
 import unittest
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
+import os
 
 
 options = Options()
@@ -20,6 +21,10 @@ class NewVisitorTest(StaticLiveServerTestCase):
             firefox_options=options,
             executable_path=r"C:/Program Files/Mozilla Firefox/geckodriver.exe"
         )
+        # staging_server = os.environ.get('STAGING_SERVER')
+        staging_server = 'ingarbi006.pythonanywhere.com/'
+        if staging_server:
+            self.live_server_url = 'https://' + staging_server
 
     def tearDown(self):
         self.browser.refresh()
