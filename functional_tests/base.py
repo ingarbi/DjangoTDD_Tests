@@ -20,9 +20,11 @@ class FunctionalTest(StaticLiveServerTestCase):
             executable_path=r"C:/Program Files/Mozilla Firefox/geckodriver.exe"
         )
         # staging_server = os.environ.get('STAGING_SERVER')
-        staging_server = 'ingarbi006.pythonanywhere.com/'
+        # staging_server = 'ingarbi006.pythonanywhere.com/'
+        staging_server = 'http://127.0.0.1:8000/'
         if staging_server:
-            self.live_server_url = 'https://' + staging_server
+            # self.live_server_url = 'https://' + staging_server
+            self.live_server_url = staging_server
 
     def tearDown(self):
         self.browser.refresh()
