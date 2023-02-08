@@ -23,10 +23,12 @@ INSTALLED_APPS = [
     'accounts',
 ]
 
-AUTH_USER_MODEL = 'accounts.ListUser'
-AUTHENTICATION_BACKENDS = [
-    'accounts.authentication.PasswordlessAuthenticationBackend',
-]
+AUTH_USER_MODEL = 'accounts.User'
+
+# AUTH_USER_MODEL = 'accounts.ListUser'
+# AUTHENTICATION_BACKENDS = [
+#     'accounts.authentication.PasswordlessAuthenticationBackend',
+# ]
 
 
 MIDDLEWARE = [
@@ -118,3 +120,21 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'uchdjango@gmail.com'
 EMAIL_HOST_PASSWORD = 'lsppgxjdvlgwnvhw'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+
+LOGGING = {
+'version': 1,
+'disable_existing_loggers': False,
+'handlers': {
+'console': {
+'level': 'DEBUG',
+'class': 'logging.StreamHandler',
+},
+},
+'loggers': {
+'django': {
+'handlers': ['console'],
+},
+},
+'root': {'level': 'INFO'},
+}
