@@ -14,7 +14,7 @@ class ItemValidationTest(FunctionalTest):
         # that list items cannot be blank
         self.wait_for(
             lambda: self.browser.find_element_by_css_selector(
-                '#id_text: invalid',
+                '#id_text:invalid',
             )
         )
         # She tries again with some text for the item, which now works
