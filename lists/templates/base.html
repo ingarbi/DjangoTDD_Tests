@@ -13,7 +13,12 @@
       <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Superlists</a>
-
+          {% if user.email %}
+          <ul class="nav navbar-nav navbar-right">
+            <li class="navbar-text">Logged in as {{ user.email }}</li>
+            <li><a href="#">Log out</a></li>
+          </ul>
+          {% else %}
           <form
             class="navbar-form navbar-right"
             method="POST"
@@ -23,9 +28,9 @@
             <input class="form-control" name="email" type="text" />
             {% csrf_token %}
           </form>
+          {% endif %}
         </div>
       </nav>
-
       {% if messages %}
       <div class="row">
         <div class="col-md-8">
